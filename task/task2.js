@@ -34,7 +34,18 @@ var factorialTests = [
 
 
 function factorial(n) {
-    //TODO
+    if (!isNaN(n)) {
+        if (n > 0) {
+            let res = 1;
+            while (n > 1) {
+                res *= n;
+                n--;
+            }
+            return res;
+        } else if (n === 0) {
+            return 1;
+        } else return NaN;
+    } else return NaN;
 }
 
 

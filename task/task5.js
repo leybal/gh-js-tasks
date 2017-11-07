@@ -55,7 +55,35 @@ var luckyNumberTests = [
 
 
 function luckyNumber(number) {
-    //TODO
+    if (number.length > 0 && number.length <= 1018 && typeof(+number) === 'number') {
+        let luckyNumbers = [4, 7],
+            count = 0,
+            flag = true;
+
+        for (let i in number) {
+            if (number[i] == luckyNumbers[0] || number[i] == luckyNumbers[1]) {
+                count++;
+            }
+        }
+
+        let minLuckyNum = 4;
+        count = count.toString();
+        if (count >= minLuckyNum) {
+            for (let i in count) {
+                if (count[i] != luckyNumbers[0] && count[i] != luckyNumbers[1]) {
+                    flag = false;
+                    return flag;
+                }
+            }
+        } else  {
+            flag = false;
+            return flag;
+        }
+
+        return flag;
+    } else {
+        return null;
+    }
 }
 
 

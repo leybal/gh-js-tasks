@@ -37,7 +37,28 @@ var doubleColaTests = [
     {
         parameters: [1802],
         expectedResult: "Penny"
+    },
+    {
+        parameters: [8],
+        expectedResult: "Leonard"
+    },
+    {
+        parameters: [10],
+        expectedResult: "Penny"
+    },
+    {
+        parameters: [12],
+        expectedResult: "Rajesh"
+    },
+    {
+        parameters: [15],
+        expectedResult: "Howard"
+    },
+    {
+        parameters: [35],
+        expectedResult: "Howard"
     }
+
     // },
     // {
     //     parameters: [12345],
@@ -47,7 +68,39 @@ var doubleColaTests = [
 
 
 function doubleCola(n) {
-    //TODO
+    if (!isNaN(n)) {
+        let names = ['Sheldon', 'Leonard', 'Penny', 'Rajesh', 'Howard'],
+            namesLenght = names.length,
+            b = [, namesLenght],
+            step = 2,
+            sum = namesLenght,
+            flag = true;
+        if (n > 5) {
+            while (flag) {
+                b[step] = namesLenght * Math.pow(2, step - 1);
+                sum += b[step];
+                if (sum >= n) {
+                    flag = false
+                } else {
+                    step++;
+                }
+            }
+
+            let curNum = n - namesLenght * (1 - Math.pow(2, step - 1)) / (1 - 2),
+                countOfClones = 1 * Math.pow(2, step - 1);
+            if (curNum < countOfClones) {
+                return names[0];
+            } else if (curNum == b[step]) {
+                return names[namesLenght - 1];
+            } else {
+                return names[Math.floor(curNum / countOfClones)];
+            }
+        } else {
+            return names[n-1]
+        }
+    } else {
+        return NaN;
+    }
 }
 
 

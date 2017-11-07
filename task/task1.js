@@ -33,7 +33,27 @@ var fibonacciTests = [
 
 
 function fibonacci(n) {
-    //TODO
+    if (!isNaN(n)) {
+        if (n > 2) {
+            let x = 1,
+                y = 1,
+                f = 0,
+                sum = 2;
+
+            for (let i = 2; i < n; i++)
+            {
+                f = x + y;
+                x = y;
+                y = f;
+                sum += f;
+            }
+            return sum;
+        } else if (n <= 2 && n > 0) {
+            return n;
+        } else if (n === 0) {
+            return 0;
+        }
+    } else return NaN;
 }
 
 

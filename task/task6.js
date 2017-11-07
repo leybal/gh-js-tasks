@@ -34,7 +34,22 @@ var prettyYearTests = [
 
 
 function prettyYear(y) {
-    //TODO
+    if (typeof(+y) === 'number' && +y >= 1000 && +y <= 9000) {
+        let z = +y + 1,
+            same = true;
+
+        while (same) {
+            let tmp = z.toString().split('').sort().join('');
+            if (tmp[0] == tmp[1] || tmp[1] == tmp[2] || tmp[2] == tmp[3]) {
+                z = z + 1;
+            } else {
+                same = false;
+            }
+        }
+        return z;
+    } else {
+        return null;
+    }
 }
 
 
