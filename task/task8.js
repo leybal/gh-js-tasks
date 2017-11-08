@@ -68,7 +68,36 @@ var registrationTests = [
 
 
 function registration(names) {
-    //TODO
+    if (typeof(names) === 'object') {
+        let  res = [],
+            checked = [];
+
+        for (let i in names) {
+            checked[i] = false;
+        }
+        res = names.slice();
+
+        for (let i in names) {
+            let k = 0;
+            for (let j in names) {
+                if (i !== j) {
+                    if (names[i] === names[j] && !checked[i]){
+                        k++;
+                        res[j] = names[i] + k;
+                        checked[j] = true;
+                    }
+                }
+            }
+        }
+
+        for (let i in checked) {
+            if (!checked[i]) res[i] = 'OK';
+        }
+
+        return res;
+    } else {
+        return null;
+    }
 }
 
 
