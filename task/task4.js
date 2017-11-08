@@ -38,7 +38,21 @@ var stringDotTests = [
 
 
 function stringDot(word) {
-    //TODO
+    if (typeof(word) == 'string') {
+        if (word.length) {
+            let res = '';
+            word.replace(/[^\d\sAOYEUI]/gi, function(str) {
+                res += '.';
+                res += str.toLowerCase();
+                return res;
+            });
+            return res;
+        } else {
+            return '';
+        }
+    } else {
+        return null;
+    }
 }
 
 
